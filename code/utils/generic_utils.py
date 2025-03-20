@@ -19,6 +19,7 @@ def move_files(src, dest):
         raise Exception("Source folder does not exist")
         
     subfolders = os.listdir(src)
+    print("Subfolders: ", subfolders)
 
     for subfolder in subfolders:
         if os.path.isdir(os.path.join(src, subfolder)):

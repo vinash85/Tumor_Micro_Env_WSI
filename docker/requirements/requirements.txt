@@ -29,5 +29,14 @@ seaborn
 scipy
 pytest
 pathml
+omegaconf
+open_clip_torch
+einops
+accelerate
+gdown
+wandb
+torch-fidelity
+torchinfo
+webdataset
 #histomicstk
 #pyimagej
