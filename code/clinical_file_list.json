@@ -1,4 +1,10 @@
-[
-    "/home/data/all_images/pan_laud_clinical/clinical.project-tcga-paad.2025-03-31/clinical.tsv",
+{
+   "clinical_data_file_path":
+    ["/home/data/all_images/pan_laud_clinical/clinical.project-tcga-paad.2025-03-31/clinical.tsv",
     "/home/data/all_images/pan_laud_clinical/clinical.project-tcga-luad.2025-03-31/clinical.tsv"
-]
+    ],
+    "followup_data_file_path":
+    ["/home/data/all_images/pan_laud_clinical/clinical.project-tcga-paad.2025-03-31/follow_up.tsv",
+    "/home/data/all_images/pan_laud_clinical/clinical.project-tcga-luad.2025-03-31/follow_up.tsv"
+    ]
+}
