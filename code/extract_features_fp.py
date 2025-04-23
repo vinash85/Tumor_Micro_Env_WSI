@@ -107,14 +107,19 @@ if __name__ == '__main__':
 		time_elapsed = time.time() - time_start
 		print('\ncomputing features for {} took {} s'.format(output_file_path, time_elapsed))
 
-		with h5py.File(output_file_path, "r") as file:
-			features = file['features'][:]
-			print('features size: ', features.shape)
-			print('coordinates size: ', file['coords'].shape)
+		try:
+			with h5py.File(output_file_path, "r") as file:
+				features = file['features'][:]
+				print('features size: ', features.shape)
+				print('coordinates size: ', file['coords'].shape)
+		
 
-		features = torch.from_numpy(features)
-		bag_base, _ = os.path.splitext(bag_name)
-		torch.save(features, os.path.join(args.feat_dir, 'pt_files', bag_base+'.pt'))
+			features = torch.from_numpy(features)
+			bag_base, _ = os.path.splitext(bag_name)
+			torch.save(features, os.path.join(args.feat_dir, 'pt_files', bag_base+'.pt'))
+		except Exception as e:
+			print('Error reading h5 file: ', e)
+			continue
 
 
 

@@ -6,6 +6,7 @@ from torchvision import transforms
 
 from PIL import Image
 import h5py
+import os
 
 class Whole_Slide_Bag(Dataset):
 	def __init__(self,
@@ -59,13 +60,17 @@ class Whole_Slide_Bag_FP(Dataset):
 		self.roi_transforms = img_transforms
 
 		self.file_path = file_path
+		self.length = 0
 
-		with h5py.File(self.file_path, "r") as f:
-			dset = f['coords']
-			self.patch_level = f['coords'].attrs['patch_level']
-			self.patch_size = f['coords'].attrs['patch_size']
-			self.length = len(dset)
-			
+		if os.path.exists(self.file_path):
+			with h5py.File(self.file_path, "r") as f:
+				dset = f['coords']
+				self.patch_level = f['coords'].attrs['patch_level']
+				self.patch_size = f['coords'].attrs['patch_size']
+				self.length = len(dset)
+		else:
+			return
+		
 		self.summary()
 			
 	def __len__(self):
